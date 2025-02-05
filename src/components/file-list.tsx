@@ -1,10 +1,12 @@
 import { FileIcon, FolderIcon } from "lucide-react";
 import { type FileItem } from "~/lib/types";
 
-const FileList: React.FC<{
+interface FileListProps {
   items: FileItem[];
   onFolderClick: (item: FileItem) => void;
-}> = ({ items, onFolderClick }) => (
+}
+
+const FileList: React.FC<FileListProps> = ({ items, onFolderClick }) => (
   <table className="w-full">
     <thead>
       <tr className="text-left text-gray-400">
@@ -40,8 +42,8 @@ const FileList: React.FC<{
               )}
             </div>
           </td>
-          <td className="py-2 text-gray-400">{item.size && "-"}</td>
-          <td className="py-2 text-gray-400">{item.modified && "-"}</td>
+          <td className="py-2 text-gray-400">{item.size ?? "-"}</td>
+          <td className="py-2 text-gray-400">{item.modified ?? "-"}</td>
         </tr>
       ))}
     </tbody>
